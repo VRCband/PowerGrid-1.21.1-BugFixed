@@ -14,3 +14,8 @@ rootProject.name = "Power Grid"
 include("native")
 //include("fabric")
 include("forge")
+//includeBuild("thirdparty/tfmg") {
+//   dependencySubstitution {
+//        substitute module("curse.maven:tfmg-community-edition-1653026:8874829") using project(":")
+//    }
+//}
