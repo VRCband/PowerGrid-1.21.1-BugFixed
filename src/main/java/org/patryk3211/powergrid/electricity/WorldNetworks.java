@@ -265,6 +265,13 @@ public class WorldNetworks extends SavedData implements NetworkGraph.IGraphModif
         }
         removed.forEach(TransmissionLine::remove);
 
+        var hasPlayers = world instanceof ServerLevel serverLevel && !serverLevel.getServer().getPlayerList().getPlayers().isEmpty();
+        if(!hasPlayers && syncTicks % 200 == 0) {
+            for(var network : subnetworks) {
+                network.resetStateForIdle();
+            }
+        }
+
         perf.start();
         int multiTick = ModdedConfigs.server().electricity.solver.multiTicks.get();
         var iter = subnetworks.iterator();

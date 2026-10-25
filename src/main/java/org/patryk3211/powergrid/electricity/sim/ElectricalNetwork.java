@@ -132,6 +132,14 @@ public class ElectricalNetwork implements IStamped {
             mna.warmUp(ticks > 0 ? 1 : ticks);
     }
 
+    public void resetStateForIdle() {
+        if(mna == null)
+            return;
+        mna.zeroState();
+        setDirty();
+        warmUp(5);
+    }
+
     public void addSegment(Collection<INetworkElement> elements) {
         for(var element : elements) {
             if(element instanceof INode node) {

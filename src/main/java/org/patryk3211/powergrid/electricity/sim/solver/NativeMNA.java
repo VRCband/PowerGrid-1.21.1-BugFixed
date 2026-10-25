@@ -279,6 +279,12 @@ public class NativeMNA implements IMNA {
 
     @Override
     public void singleTick() {
+        // Skip fully idle solves whenever nothing changed. This keeps the native backend stable
+        // after long offline periods and avoids pointless work while the grid is quiescent.
+        if(rhsOps.position() == 0 && jacobianOps.position() == 0 && !hooksChanged && converged) {
+            return;
+        }
+
         // Finalize modification buffers.
         rhsOps.putInt(-1);
 
