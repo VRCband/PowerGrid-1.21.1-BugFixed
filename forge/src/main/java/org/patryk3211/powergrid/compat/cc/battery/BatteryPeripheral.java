@@ -2,8 +2,8 @@ package org.patryk3211.powergrid.compat.cc.battery;
 
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.patryk3211.powergrid.electricity.battery.MultiBlockBatteryEntity;
 
 public class BatteryPeripheral implements IPeripheral {
@@ -14,7 +14,7 @@ public class BatteryPeripheral implements IPeripheral {
     }
 
     @Override
-    public @NonNull String getType() {
+    public @NotNull String getType() {
         return "powergrid_battery";
     }
 

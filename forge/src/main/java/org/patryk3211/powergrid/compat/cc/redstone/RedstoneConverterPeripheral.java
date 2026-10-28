@@ -14,12 +14,17 @@ public class RedstoneConverterPeripheral implements IPeripheral {
     }
 
     @LuaFunction
+    public double value() {
+        return converter.signalOverride != null ? converter.signalOverride : 0;
+    }
+
+    @LuaFunction(mainThread = true)
     public void setValue(double value) {
         converter.signalOverride = (float) value;
         converter.setUnsaved();
     }
 
-    @LuaFunction
+    @LuaFunction(mainThread = true)
     public void clearValue() {
         converter.signalOverride = null;
         converter.setUnsaved();

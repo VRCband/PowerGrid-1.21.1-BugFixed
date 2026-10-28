@@ -90,20 +90,47 @@ public class HvBreakerBlockEntity extends ElectricKineticBlockEntity {
         redstoneState = level.getBestNeighborSignal(worldPosition) > 0;
     }
 
+    public void setClosed(boolean closed) {
+        if (state == closed) {
+            return;
+        }
+        state = closed;
+        if(wire != null) {
+            wire.setState(state);
+        } else {
+            electricBehaviour.rebuildCircuit(false);
+        }
+        charge.setValueNoUpdate(state ? 1 : 0);
+        (state ? ModdedSoundEvents.BREAKER_ON : ModdedSoundEvents.BREAKER_OFF)
+                .playOnServer(level, worldPosition);
+        notifyUpdate();
+    }
+
+    public void toggle() {
+        setClosed(!state);
+    }
+
+    public boolean isClosed() {
+        return state;
+    }
+
+    public boolean isCharged() {
+        return charge.getValue() == 1;
+    }
+
+    public int getTripCurrent() {
+        return setting.getValue();
+    }
+
+    public void setTripCurrent(int current) {
+        setting.setValue(current);
+    }
+
     public void trigger() {
         assert level != null;
         var redstone = level.getBestNeighborSignal(worldPosition) > 0;
         if(redstone && !redstoneState && (charge.getValue() == 1 || state)) {
-            state = !state;
-            if(wire != null) {
-                wire.setState(state);
-            } else {
-                electricBehaviour.rebuildCircuit(false);
-            }
-            charge.setValueNoUpdate(state ? 1 : 0);
-            (state ? ModdedSoundEvents.BREAKER_ON : ModdedSoundEvents.BREAKER_OFF)
-                    .playOnServer(level, worldPosition);
-            notifyUpdate();
+            toggle();
         }
         redstoneState = redstone;
     }

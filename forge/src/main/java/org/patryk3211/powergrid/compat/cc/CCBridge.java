@@ -4,6 +4,7 @@ import dan200.computercraft.api.peripheral.PeripheralCapability;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.patryk3211.powergrid.collections.ModdedBlockEntities;
 import org.patryk3211.powergrid.compat.cc.battery.BatteryPeripheral;
+import org.patryk3211.powergrid.compat.cc.breaker.HvBreakerPeripheral;
 import org.patryk3211.powergrid.compat.cc.clutch.GeneratorClutchPeripheral;
 import org.patryk3211.powergrid.compat.cc.gauges.CurrentGaugePeripheral;
 import org.patryk3211.powergrid.compat.cc.gauges.EnergyMeterPeripheral;
@@ -47,6 +48,11 @@ public class CCBridge {
                 PeripheralCapability.get(),
                 ModdedBlockEntities.REDSTONE_CONVERTER.get(),
                 (be, direction) -> new RedstoneConverterPeripheral(be)
+        );
+        event.registerBlockEntity(
+                PeripheralCapability.get(),
+                ModdedBlockEntities.HV_BREAKER.get(),
+                (be, direction) -> new HvBreakerPeripheral(be)
         );
     }
 }

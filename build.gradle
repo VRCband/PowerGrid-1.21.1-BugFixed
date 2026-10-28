@@ -37,7 +37,18 @@ allprojects {
 		maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // Forge Config API Port
 //		maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
 		maven { url = "https://maven.tterrag.com/" } // Registrate
-		maven { url = "https://maven.squiddev.cc" } // CC: Tweaked
+
+		exclusiveContent {
+			forRepository {
+				maven {
+					name = "Modrinth"
+					url = "https://api.modrinth.com/maven"
+				}
+			}
+			filter {
+				includeGroup "maven.modrinth"
+			}
+		}
 
 		maven {
 			url = "https://maven.createmod.net"
@@ -55,15 +66,7 @@ allprojects {
 
 		maven { url = "https://maven.shedaniel.me" } // Cloth Config, REI
 		maven { url = "https://maven.blamejared.com" } // JEI
-
-		maven { // TFMG
-			url = "https://api.modrinth.com/maven"
-			content { includeGroup("maven.modrinth") }
-		}
-
 		maven { url = "https://maven.terraformersmc.com/releases" } // Mod Menu, EMI
-
-		maven { url = "https://maven.squiddev.cc" } // CC: Tweaked
 		maven { // Sable Companion
 			name = "RyanHCode Maven"
 			url = "https://maven.ryanhcode.dev/releases"

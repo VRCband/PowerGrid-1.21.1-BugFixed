@@ -47,21 +47,9 @@ dependencies {
     //modLocalRuntime("maven.modrinth:farmers-delight:${project.minecraft_version}-1.3.4")
     modCompileOnly("maven.modrinth:farmers-delight:${project.minecraft_version}-${farmers_delight_version}")
 
-    // CC: Tweaked
-    modCompileOnly("cc.tweaked:cc-tweaked-${project.minecraft_version}-core-api:${cc_tweaked_version}")
-    modCompileOnly("cc.tweaked:cc-tweaked-${project.minecraft_version}-forge-api:${cc_tweaked_version}")
-    forgeRuntimeLibrary "cc.tweaked:cobalt:0.9.7"
-    modLocalRuntime("cc.tweaked:cc-tweaked-${project.minecraft_version}-forge:${cc_tweaked_version}")
-
-    // Farmer's Delight
-    //modLocalRuntime("maven.modrinth:farmers-delight:${project.minecraft_version}-1.3.4")
-    modCompileOnly("maven.modrinth:farmers-delight:${project.minecraft_version}-${farmers_delight_version}")
-
-    // CC: Tweaked
-    modCompileOnly("cc.tweaked:cc-tweaked-${project.minecraft_version}-core-api:${cc_tweaked_version}")
-    modCompileOnly("cc.tweaked:cc-tweaked-${project.minecraft_version}-forge-api:${cc_tweaked_version}")
-    forgeRuntimeLibrary "cc.tweaked:cobalt:0.9.7"
-    modLocalRuntime("cc.tweaked:cc-tweaked-${project.minecraft_version}-forge:${cc_tweaked_version}")
+    // CC: Tweaked (via Modrinth Maven API)
+    modCompileOnly("maven.modrinth:gu7yAYhd:1ewzHZYg")
+    modLocalRuntime("maven.modrinth:gu7yAYhd:1ewzHZYg")
 
     // Cold Sweat
     modCompileOnly "curse.maven:cold-sweat-506194:${cold_sweat_cursemaven_fileid}-sources-${cold_sweat_sources_cursemaven_fileid}"
